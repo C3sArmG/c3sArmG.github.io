@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return ('index.html')
+0    #render_template('index.html')
 
 @app.route('/cotizar', methods=['POST'])
 def cotizar():
