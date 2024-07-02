@@ -8,7 +8,7 @@ def index():
     return ('index.html')
     #render_template('index.html')
 
-@app.route('/cotizar', methods=['POST'])
+@app.route('/cotizar', methods=['GET'])
 def cotizar():
     marca = request.form['marca']
     modelo = request.form['modelo']
@@ -21,8 +21,8 @@ def cotizar():
     valor_final = cotizador.cotizar_auto(pvp_mercado, kilometraje, rotacion)
     return jsonify(valor_final=valor_final)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 
 
