@@ -85,7 +85,7 @@
                 document.getElementById('valorFinal').textContent = data.valor_final;
                 document.getElementById('resultadoCotizacion').style.display = 'block';
                 document.getElementById('cotizarForm').style.display = 'none';
-                document.getElementById('container').style.display = 'none';// Oculta el formulario
+                document.getElementById('resultadoCotizacion').style.display = 'none';// Oculta el formulario
             })
             .catch(error => {
                 console.error('Error:', error);
