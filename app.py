@@ -19,7 +19,10 @@ def cotizar():
     rotacion = request.form['rotacion'].lower()
 
     valor_final = cotizador.cotizar_auto(pvp_mercado, kilometraje, rotacion)
-    return jsonify(valor_final=valor_final)
+        return jsonify({'valor_final': valor_final})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    #return jsonify(valor_final=valor_final)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
