@@ -69,15 +69,21 @@
                 method: 'GET',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                // Muestra el resultado
-                document.getElementById('valorFinal').textContent = data.valor_final;
-                document.getElementById('resultadoCotizacion').style.display = 'block';
-                document.getElementById('cotizarForm').style.display = 'none'; // Oculta el formulario
+            .then(response => {
+                if (!response.ok) {
+                    // Manejo de errores HTTP
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
             })
+            .then(data => {
+                if (data.error) {
+                    // Manejo de errores en la respuesta
+                    throw new Error(data.error);
+                }
             .catch(error => {
-                console.error('Error:', error);     
+                console.error('Error:', error);
+                alert('Ocurrió un error: ' + error.message);
             });
         });
     </script>
