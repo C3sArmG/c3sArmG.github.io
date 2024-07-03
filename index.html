@@ -10,8 +10,8 @@
     <div class="title">
         <h1>COTIZADOR DE AUTOS - CARLO.PE 2024</h1>
     </div>
-    <div class="container">
-        <form id="cotizarForm"> <!--action="/cotizar" method="POST" -->
+    <div class="container" id="formContainer">
+        <form id="cotizarForm">
             <div class="form-group">
                 <label for="marca">Marca:</label>
                 <input type="text" id="marca" name="marca" required><br><br>
@@ -27,7 +27,6 @@
             <div class="form-group">
                 <label for="año">Año:</label>
                 <input type="number" id="año" name="año" required><br><br>
-
             </div>
             <div class="form-group">
                 <label for="pvp_mercado">PVP Mercado:</label>
@@ -37,18 +36,15 @@
                 <label for="kilometraje">Kilometraje:</label>
                 <input type="number" id="kilometraje" name="kilometraje" required><br><br>
             </div>
-
             <div class="form-group">
                 <label for="rotacion"> Rotación:</label>
                 <input type="text" id="rotacion" name="rotacion" required><br><br>
             </div>
-
             <button type="submit">Cotizar</button>
-            
         </form>
     </div>
     
-    <div id="resultadoCotizacion" class="container2" style="display: block;">
+    <div id="resultadoCotizacion" class="container2">
         <div class="title">
             <h1>Resultado de la Cotización</h1>
         </div>
@@ -65,8 +61,8 @@
             const formData = new FormData(this);
 
             // Realiza la solicitud AJAX
-            fetch('https://c3sarmg.github.io/cotizar', {
-                method: 'GET',
+            fetch('/cotizar', {
+                method: 'POST',
                 body: formData
             })
             .then(response => {
@@ -84,15 +80,14 @@
                 // Muestra el resultado
                 document.getElementById('valorFinal').textContent = data.valor_final;
                 document.getElementById('resultadoCotizacion').style.display = 'block';
-                document.getElementById('cotizarForm').style.display = 'none';
-                document.getElementById('resultadoCotizacion').style.display = 'none';// Oculta el formulario
+                document.getElementById('formContainer').style.display = 'none'; // Oculta el formulario
             })
             .catch(error => {
+                // Muestra el error en la consola
                 console.error('Error:', error);
                 alert('Ocurrió un error: ' + error.message);
             });
         });
     </script>
-
 </body>
 </html>
