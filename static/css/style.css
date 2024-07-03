@@ -18,7 +18,7 @@ body {
     font-size: 25px;
 }
 
-.container, .container2 {
+.container {
     width: 40%;
     background: white;
     border-radius: 15px;
@@ -30,17 +30,24 @@ body {
     justify-content: center;
     display: flex;
     max-width: 700px;
-}
-
-.container {
-    position: absolute;
-    top: 15%;
+    position: relative;
+    z-index: 1;
 }
 
 .container2 {
+    width: 40%;
+    background: white;
+    border-radius: 15px;
+    margin: 10px;
+    overflow: hidden;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    justify-content: center;
     display: none;
-    position: absolute;
-    top: 15%;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
 }
 
 form {
@@ -101,6 +108,7 @@ input[type="submit"]:hover {
     color: #333;
     margin-top: 20px;
 }
+
 
 
 
