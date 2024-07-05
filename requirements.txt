@@ -1,5 +1,9 @@
 flask
 
+pandas
+
+jsonify
+
 python-dotenv
 
 gunicorn
